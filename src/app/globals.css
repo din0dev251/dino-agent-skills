@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface: #0d0d0d;
+  --surface-card: #161616;
+  --surface-hover: #1f1f1f;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+}
+
+body {
+  @apply bg-surface text-gray-100 antialiased;
+  background-color: var(--surface);
+}
