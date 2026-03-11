@@ -122,7 +122,7 @@ export default function AdminSkillsPage() {
               <tr key={s.id} className="border border-white/10">
                 <td className="border border-white/10 px-3 py-2 text-white">{s.title}</td>
                 <td className="border border-white/10 px-3 py-2 text-gray-400">
-                  {categories.find((c) => c.id === s.categoryId)?.name ?? s.categoryId || "—"}
+                  {categories.find((c) => c.id === s.categoryId)?.name ?? (s.categoryId || "—")}
                 </td>
                 <td className="border border-white/10 px-3 py-2 text-gray-400">{s.starCount}</td>
                 <td className="border border-white/10 px-3 py-2 text-right">
