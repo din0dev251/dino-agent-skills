@@ -95,19 +95,19 @@ export function rowsToObjects<T>(rows: Row[], keys: (keyof T)[]): T[] {
   return dataRows.map((row) => {
     const obj: Record<string, unknown> = {};
     keys.forEach((key, i) => {
-      let val = row[i];
-      if (val === "" || val === undefined) val = null;
-      obj[key as string] = val;
+      const val = row[i];
+      obj[key as string] = val === "" || val === undefined ? null : val;
     });
     return obj as T;
   });
 }
 
 export function objectToRow(obj: Record<string, unknown>, keys: string[]): Row {
-  return keys.map((k) => {
+  return keys.map((k): string | number => {
     const v = obj[k];
     if (Array.isArray(v)) return JSON.stringify(v);
-    return v ?? "";
+    if (typeof v === "number") return v;
+    return v != null ? String(v) : "";
   });
 }
 
